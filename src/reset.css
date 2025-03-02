@@ -49,10 +49,15 @@ table {
 
 input, button, a {
 	font: inherit;
+	color: inherit;
 }
 
 button {
 	border: none;
 	outline: none;
 	cursor: pointer;
+}
+
+a {
+	text-decoration: none;
 }
