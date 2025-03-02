@@ -1,0 +1,9 @@
+.banner h2 {
+    font-size: 25px;
+    text-align: center;
+}
+
+.banner span {
+    color: #ef4444;
+    font-weight: bold;
+}

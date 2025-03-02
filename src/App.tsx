@@ -1,5 +1,6 @@
 import { useRoutes } from "react-router-dom"
 import routes from "./router"
+import Banner from "./components/Banner/Banner"
 
 function App() {
 
@@ -7,7 +8,8 @@ function App() {
 
   return (
     <>
-    {routes}
+    <Banner />
+    {router}
     </>
   )
 }
