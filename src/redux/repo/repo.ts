@@ -1,25 +1,31 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { Repo } from "../../types/repo.types";
 
-type Repo = {
-  id: string;
-  name: string;
-  description: string;
-  start: number;
-};
+const initialState: Repo[] = [];
 
-type RepoState = {
-  repos: Repo[];
-};
-
-const initialState: RepoState = {
-  repos: [],
-};
+export const fetchRepo = createAsyncThunk(
+  "repos/fetchRepo",
+  async (username: string) => {
+    const response = await fetch(
+      `https://api.github.com/users/${username}/repos`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch repositories");
+    }
+    const data = await response.json();
+    return data as Repo[];
+  }
+);
 
 const repoSlice = createSlice({
-  name: "repo",
+  name: "repos",
   initialState,
   reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchRepo.fulfilled, (state, action) => {
+      state.push(...action.payload);
+    });
+  },
 });
 
-export const {} = repoSlice.actions;
 export default repoSlice.reducer;
