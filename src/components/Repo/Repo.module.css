@@ -86,6 +86,34 @@
   overflow: hidden;
 }
 
+.favorite {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.favorite button {
+  background-color: #f87171;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  column-gap: 2px;
+  transition: all 100ms ease-in;
+  -webkit-transition: all 100ms ease-in;
+  -moz-transition: all 100ms ease-in;
+  -ms-transition: all 100ms ease-in;
+  -o-transition: all 100ms ease-in;
+}
+
+.favorite button:hover {
+  background-color: #dc2626;
+}
+
 .stars {
   display: flex;
   align-items: center;

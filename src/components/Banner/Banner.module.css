@@ -1,9 +1,70 @@
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .banner h2 {
-    font-size: 25px;
-    text-align: center;
+  font-size: 25px;
+  text-align: center;
 }
 
 .banner span {
-    color: #ef4444;
-    font-weight: bold;
+  color: #ef4444;
+  font-weight: bold;
+}
+
+.banner a {
+  color: #ef4444;
+  font-size: 50px;
+}
+
+.banner a {
+  background-color: transparent;
+  border: 2px solid #ff4757;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  outline: none;
+}
+
+.banner a svg {
+  font-size: 24px;
+  color: #ff4757;
+  transition: color 0.3s ease;
+}
+
+.banner a:hover {
+  background-color: #dbdbdb;
+  transform: scale(1.1);
+}
+
+.banner a:hover .banner a svg {
+  color: white;
+}
+
+.banner a:active {
+  background-color: #ff6b81;
+  transform: scale(0.9);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.heart-button:focus {
+  animation: pulse 0.5s ease;
 }

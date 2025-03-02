@@ -4,13 +4,12 @@ import Loader from "../Loader/Loader";
 import Repo from "../Repo/Repo";
 import { Repo as RepoType } from "../../types/repo.types";
 
-import styles from "./Repositories.module.css"
+import styles from "./Repositories.module.css";
 
 function Repositories() {
   const { error, loading, repos } = useSelector(
     (state: RootState) => state.repos
   );
-  console.log({ error, loading, repos });
 
   return (
     <div>
