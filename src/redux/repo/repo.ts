@@ -1,8 +1,8 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Repo, RepoState } from "../../types/repo.types";
 
 const initialState: RepoState = {
-  repo: null,
+  repos: null,
   loading: false,
   error: null,
 };
@@ -37,7 +37,7 @@ const repoSlice = createSlice({
       })
       .addCase(fetchRepo.fulfilled, (state, action) => {
         state.loading = false;
-        state.repo = action.payload;
+        state.repos = action.payload;
       })
       .addCase(fetchRepo.rejected, (state, action) => {
         state.loading = false;

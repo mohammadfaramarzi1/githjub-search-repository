@@ -6,7 +6,7 @@ export type Repo = {
 };
 
 export type RepoState = {
-  repo: Repo[] | null;
+  repos: Repo[] | null;
   loading: boolean;
   error: string | null;
 };
