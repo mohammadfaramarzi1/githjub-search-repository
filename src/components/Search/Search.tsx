@@ -2,14 +2,23 @@ import { FaSearch } from "react-icons/fa";
 
 import styles from "./Search.module.css";
 import { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { fetchRepo } from "../../redux/repo/repo";
 
 function Search() {
   const [serach, setSearch] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     inputRef.current?.focus();
   });
+
+  const clickHandler = () => {
+    if (!Search) return;
+    dispatch(fetchRepo(serach.toLowerCase()));
+  };
 
   return (
     <div className={styles.search}>
@@ -22,7 +31,7 @@ function Search() {
           setSearch(event.target.value)
         }
       />
-      <button>
+      <button onClick={clickHandler}>
         <FaSearch />
       </button>
     </div>

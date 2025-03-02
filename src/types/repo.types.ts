@@ -2,7 +2,9 @@ export type Repo = {
   id: string;
   name: string;
   description: string;
-  star: number;
+  stargazers_count: number;
+  html_url: string;
+  language: string;
 };
 
 export type RepoState = {
