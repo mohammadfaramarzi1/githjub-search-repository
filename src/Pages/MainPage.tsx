@@ -1,8 +1,11 @@
 import React from 'react'
+import Search from '../components/Search/Search'
 
 function MainPage() {
   return (
-    <div>MainPage</div>
+    <div>
+      <Search />
+    </div>
   )
 }
 
