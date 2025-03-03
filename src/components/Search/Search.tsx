@@ -4,12 +4,13 @@ import styles from "./Search.module.css";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchRepo } from "../../redux/repo/repo";
+import { AppDispatch } from "../../redux/store";
 
 function Search() {
   const [serach, setSearch] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     inputRef.current?.focus();

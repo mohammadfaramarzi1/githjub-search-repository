@@ -13,10 +13,6 @@ function Repositories({
   lastIndex,
 }: RepoState) {
 
-  useEffect(() => {
-    
-  })
-
   return (
     <div>
       {loading && <Loader />}
