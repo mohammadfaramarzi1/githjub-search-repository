@@ -6,14 +6,14 @@ function Pagination({
   currentPage,
   setCurrentPage,
 }: PaginationProps) {
-  const paginationItemCount = totalRepoCount.length / itemsPerPage;
+  const paginationItemCount = Math.ceil(totalRepoCount.length / itemsPerPage);
 
   return (
     <div className={styles.pagination}>
       {totalRepoCount.length &&
         Array.from(
           { length: paginationItemCount },
-          (pagination, index: number) => (
+          (_, index: number) => (
             <button
               key={index}
               className={currentPage === index + 1 ? styles.currentpage : ""}

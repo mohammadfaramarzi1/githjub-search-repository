@@ -1,4 +1,4 @@
-import { RootState } from "@reduxjs/toolkit/dist/query";
+import { RootState } from "../redux/store";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Repo from "../components/Repo/Repo";

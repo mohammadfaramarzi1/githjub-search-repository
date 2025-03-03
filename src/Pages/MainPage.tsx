@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import Pagination from "../components/Pagination/Pagination";
 import Repositories from "../components/Repositories/Repositories";
 import Search from "../components/Search/Search";
-import { RootState } from "@reduxjs/toolkit/dist/query";
+import { RootState } from "../redux/store";
 import { useState } from "react";
 
 function MainPage() {
