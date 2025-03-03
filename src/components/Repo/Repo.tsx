@@ -13,7 +13,7 @@ import { isInFavorite } from "../../utils/repo";
 import styles from "./Repo.module.css";
 import {
   addFavoriteToLocalStorage,
-  getFavoritesFromLocalStorage,
+  removeFavoriteFromLocalStorage,
 } from "../../utils/localStorage";
 
 function Repo({
@@ -26,8 +26,6 @@ function Repo({
 }: RepoType) {
   const [isInFavorites, setIsInFavorites] = useState<boolean>(false);
   const { favorites } = useSelector((state: RootState) => state.favorites);
-  const [favoriteItems, setFavoriteItems] = useState<RepoType[]>(favorites);
-
   const dispatch = useDispatch();
 
   const repo = {
@@ -39,29 +37,23 @@ function Repo({
     stargazers_count,
   };
 
-
   useEffect(() => {
     const checkFavoriteRepoStatus = isInFavorite({
       favoriteRepos: favorites,
       repo,
     });
-    if (checkFavoriteRepoStatus) {
-      setIsInFavorites(false);
-    } else {
-      addFavoriteToLocalStorage(repo);
-      setIsInFavorites(true);
-    }
-  }, [isInFavorites, favoriteItems, favorites]);
+    setIsInFavorites(checkFavoriteRepoStatus);
+  }, [favorites, repo]);
 
-  const addToFavoriveHandler = () => {
+  const addToFavoritesHandler = () => {
     dispatch(addFavorites(repo));
-    setFavoriteItems((favoriteItems) => [...favoriteItems, repo]);
-    // addFavoriteToLocalStorage(repo);
+    addFavoriteToLocalStorage(repo);
     setIsInFavorites(true);
   };
 
   const removeFromFavoritesHandler = () => {
     dispatch(removeFavorites(repo));
+    removeFavoriteFromLocalStorage(repo);
     setIsInFavorites(false);
   };
 
@@ -89,13 +81,13 @@ function Repo({
               </span>
             </p>
             {isInFavorites ? (
-              <button onClick={addToFavoriveHandler}>
-                Add to Favorite
+              <button onClick={removeFromFavoritesHandler}>
+                Remove From Favorites
                 <MdFavorite />
               </button>
             ) : (
-              <button onClick={removeFromFavoritesHandler}>
-                Remove From Favorites
+              <button onClick={addToFavoritesHandler}>
+                Add to Favorite
                 <MdFavorite />
               </button>
             )}

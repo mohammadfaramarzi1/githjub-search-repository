@@ -1,0 +1,14 @@
+.favorites h2 {
+    color: #ef4444;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.favoriterepos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
