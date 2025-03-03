@@ -28,3 +28,8 @@ export const removeFavoriteFromLocalStorage = (value: RepoType) => {
 
   localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
 };
+
+export const getFavoritesFromLocalStorage = (): RepoType[] => {
+  const favoritesJSON = localStorage.getItem("favorites");
+  return favoritesJSON ? JSON.parse(favoritesJSON) : [];
+};

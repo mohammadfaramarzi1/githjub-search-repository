@@ -12,3 +12,10 @@
     justify-content: center;
     gap: 20px;
 }
+
+.empty {
+    color: #ef4444;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 120px;
+}

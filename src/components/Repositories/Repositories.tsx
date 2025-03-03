@@ -3,6 +3,7 @@ import Repo from "../Repo/Repo";
 import { RepoState, Repo as RepoType } from "../../types/repo.types";
 
 import styles from "./Repositories.module.css";
+import { useEffect } from "react";
 
 function Repositories({
   error,
@@ -11,6 +12,11 @@ function Repositories({
   firstIndex,
   lastIndex,
 }: RepoState) {
+
+  useEffect(() => {
+    
+  })
+
   return (
     <div>
       {loading && <Loader />}

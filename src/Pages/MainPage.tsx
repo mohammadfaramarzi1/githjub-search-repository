@@ -14,7 +14,6 @@ function MainPage() {
   const firstIndex = (currentPage - 1) * itemsPerPage;
   const lastIndex = firstIndex + itemsPerPage;
 
-
   return (
     <div>
       <Search />
