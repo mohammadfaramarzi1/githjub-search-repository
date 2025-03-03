@@ -2,14 +2,19 @@ import { Repo as RepoType } from "../../types/repo.types";
 import { FaRegStar } from "react-icons/fa";
 import { MdDoubleArrow } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
-
-import styles from "./Repo.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addFavorites, removeFavorites } from "../../redux/favorites/favorites";
 import { useEffect, useState } from "react";
 import { RootState } from "@reduxjs/toolkit/dist/query";
+
+import { addFavorites, removeFavorites } from "../../redux/favorites/favorites";
 import { isInFavorite } from "../../utils/repo";
+
+import styles from "./Repo.module.css";
+import {
+  addFavoriteToLocalStorage,
+  getFavoritesFromLocalStorage,
+} from "../../utils/localStorage";
 
 function Repo({
   description,
@@ -20,8 +25,9 @@ function Repo({
   id,
 }: RepoType) {
   const [isInFavorites, setIsInFavorites] = useState<boolean>(false);
-
   const { favorites } = useSelector((state: RootState) => state.favorites);
+  const [favoriteItems, setFavoriteItems] = useState<RepoType[]>(favorites);
+
   const dispatch = useDispatch();
 
   const repo = {
@@ -33,6 +39,7 @@ function Repo({
     stargazers_count,
   };
 
+
   useEffect(() => {
     const checkFavoriteRepoStatus = isInFavorite({
       favoriteRepos: favorites,
@@ -41,12 +48,15 @@ function Repo({
     if (checkFavoriteRepoStatus) {
       setIsInFavorites(false);
     } else {
+      addFavoriteToLocalStorage(repo);
       setIsInFavorites(true);
     }
-  }, [isInFavorites, favorites]);
+  }, [isInFavorites, favoriteItems, favorites]);
 
   const addToFavoriveHandler = () => {
     dispatch(addFavorites(repo));
+    setFavoriteItems((favoriteItems) => [...favoriteItems, repo]);
+    // addFavoriteToLocalStorage(repo);
     setIsInFavorites(true);
   };
 

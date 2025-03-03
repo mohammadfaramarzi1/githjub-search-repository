@@ -1,9 +1,4 @@
-import { Repo } from "../types/repo.types";
-
-type isInFavoriteProps = {
-  favoriteRepos: Repo[];
-  repo: Repo;
-};
+import { isInFavoriteProps } from "../types/favorites.types";
 
 export const isInFavorite = ({
   favoriteRepos,
