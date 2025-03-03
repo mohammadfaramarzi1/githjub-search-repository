@@ -11,6 +11,8 @@ export type RepoState = {
   repos: Repo[] | null;
   loading: boolean;
   error: string | null;
+  firstIndex?: number;
+  lastIndex?: number;
 };
 
 export type FavoriteRepos = {

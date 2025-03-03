@@ -1,4 +1,6 @@
 type PaginationProps = {
-  totalRepoCount: number;
+  totalRepoCount: Array<object>;
   itemsPerPage: number;
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
 };
